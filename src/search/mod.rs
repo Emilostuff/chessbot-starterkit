@@ -38,6 +38,7 @@ impl Searcher {
          *
          *
          */
+        std::thread::sleep(std::time::Duration::from_millis(500));
 
         // Report results
         let dummy_best_move = position

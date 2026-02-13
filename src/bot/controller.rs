@@ -65,11 +65,7 @@ impl Controller {
             // Uci handshake
             UciMessage::Uci => {
                 self.send(UciMessage::Id {
-                    name: Some(format!(
-                        "{} {}",
-                        env!("CARGO_PKG_NAME"),
-                        env!("CARGO_PKG_VERSION")
-                    )),
+                    name: Some(format!("{}", env!("CARGO_PKG_NAME"),)),
                     author: None,
                 });
                 self.send(UciMessage::Id {
