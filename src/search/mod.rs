@@ -38,14 +38,15 @@ impl Searcher {
          *
          *
          */
+
         std::thread::sleep(std::time::Duration::from_millis(500));
 
-        // Report results
-        let dummy_best_move = position
-            .legal_moves()
-            .first()
-            .expect("No legal moves found")
-            .clone();
+        // Select random move as best move
+        let dummy_best_move = position.legal_moves()[std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .unwrap()
+            .as_millis() as usize
+            % position.legal_moves().len()];
         let dummy_best_score = 42;
 
         // It is necessary to send info at least once to En Croissant (the user interface) before outputting best move.
